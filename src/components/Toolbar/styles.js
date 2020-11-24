@@ -3,6 +3,7 @@ import { darkerBlue } from '../../styles/colors';
 
 export default StyleSheet.create({
   toolbar: {
+    paddingTop: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

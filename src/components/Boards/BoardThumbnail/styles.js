@@ -5,5 +5,6 @@ export default StyleSheet.create({
     width: 115,
     height: 115,
     margin: 10,
+    position: 'relative',
   },
 });

@@ -26,8 +26,8 @@ const BoardThumbnail = ({
         resizeMode="cover"
         source={{ uri: thumbnailPhoto }}
       />
-      <View style={styles.thumbnailText}>
-        <Text style={styles.thumbnailText}>{name}</Text>
+      <View>
+        <Text style={styles.thumbnailName}>{name}</Text>
         <Text style={styles.thumbnailText}>{description}</Text>
       </View>
     </View>

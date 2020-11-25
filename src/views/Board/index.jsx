@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Toolbar from '../../components/Toolbar';
-import BoardList from '../../components/Boards/BoardList';
+import TaskList from '../../components/Tasks/TaskList';
 import data from '../../resources/data.json';
 
 class Boards extends React.Component {

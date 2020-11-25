@@ -3,17 +3,21 @@
         {
             "id": 1,
             "name": "Trip to the Netherlands!",
-            "thumbnailPhoto": "https://www.state.gov/wp-content/uploads/2018/11/Netherlands-2114x1406.jpg"
+            "thumbnailPhoto": "https://www.state.gov/wp-content/uploads/2018/11/Netherlands-2114x1406.jpg",
+            "description": "For my upcomming trip to the Netherlands"
         },
         {
             "id": 2,
             "name": "Boring stuff",
-            "thumbnailPhoto": "https://hbr.org/resources/images/article_assets/2019/06/Jun19_05_1040477378.jpg"
+            "thumbnailPhoto": "https://hbr.org/resources/images/article_assets/2019/06/Jun19_05_1040477378.jpg",
+            "description": "Just ordinary day-to-day boring things"
+
         },
         {
             "id": 3,
             "name": "Bucket list",
-            "thumbnailPhoto": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg"
+            "thumbnailPhoto": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg",
+            "description": "Things I've always wanted to do"
         }
     ],
     "lists": [

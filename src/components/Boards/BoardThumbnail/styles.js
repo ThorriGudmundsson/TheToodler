@@ -6,10 +6,17 @@ export default StyleSheet.create({
     height: 70,
     margin: 10,
   },
-  thumbnailText: {
+  thumbnailName: {
     fontSize: 14,
     fontWeight: 'bold',
     flexDirection: 'column',
+    margin: 8,
+  },
+  thumbnailText: {
+    fontSize: 11,
+    fontWeight: 'normal',
+    flexDirection: 'column',
+    padding: 8,
   },
   boardThumbnailContainer: {
     flexDirection: 'row',

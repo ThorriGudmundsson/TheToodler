@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
 import styles from './styles';
 import BoardThumbnail from '../BoardThumbnail';
 
@@ -8,15 +8,15 @@ const BoardList = ({ boards }) => (
     <FlatList
       numColumns={1}
       data={boards}
-      renderItem={({ item: { id, name, thumbnailPhoto } }) => (
-        <>
-          <Text>
-            <BoardThumbnail thumbnailPhoto={thumbnailPhoto} />
-            {name}
-          </Text>
-        </>
+      renderItem={({ item: { id, name, description, thumbnailPhoto } }) => (
+        <BoardThumbnail
+          id={id}
+          name={name}
+          description={description}
+          thumbnailPhoto={thumbnailPhoto}
+        />
       )}
-      keyExtractor={(board) => board.name}
+      keyExtractor={(board) => board.id}
     />
   </View>
 );

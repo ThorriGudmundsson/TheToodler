@@ -20,4 +20,10 @@ export default StyleSheet.create({
     borderColor: 'black',
     margin: 4,
   },
+  checkmark: {
+    position: 'absolute',
+    top: 15,
+    right: 15,
+    fontSize: 20,
+  },
 });

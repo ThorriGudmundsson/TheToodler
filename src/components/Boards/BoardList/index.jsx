@@ -3,20 +3,25 @@ import { View, FlatList } from 'react-native';
 import styles from './styles';
 import BoardThumbnail from '../BoardThumbnail';
 
-const BoardList = ({ boards }) => (
+const BoardList = ({ boards, onLongPress }) => (
   <View style={styles.listContainer}>
     <FlatList
       numColumns={1}
       data={boards}
-      renderItem={({ item: { id, name, description, thumbnailPhoto } }) => (
+      renderItem={({
+        item: {
+          id, name, description, thumbnailPhoto,
+        },
+      }) => (
         <BoardThumbnail
           id={id}
           name={name}
           description={description}
           thumbnailPhoto={thumbnailPhoto}
+          onLongPress={onLongPress}
         />
       )}
-      keyExtractor={(board) => board.id}
+      keyExtractor={(board) => board.id.toString()}
     />
   </View>
 );

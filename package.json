@@ -9,6 +9,7 @@
     "lint": "node ./node_modules/eslint/bin/eslint.js **/*.jsx"
   },
   "dependencies": {
+    "@react-navigation/native": "^5.8.10",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "prop-types": "^15.7.2",
@@ -18,7 +19,11 @@
     "react-native-gesture-handler": "~1.7.0",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.3",
-    "react-navigation-stack": "^2.10.2"
+    "react-navigation-stack": "^2.10.2",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-screens": "~2.10.1",
+    "react-native-safe-area-context": "3.1.4",
+    "@react-native-community/masked-view": "0.1.10"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

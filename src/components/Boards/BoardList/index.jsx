@@ -28,7 +28,7 @@ const BoardList = ({ boards, onLongPress, selectedBoards }) => (
   </View>
 );
 
-BoardThumbnail.propTypes = {
+BoardList.propTypes = {
   // Boards
   boards: PropTypes.arrayOf(PropTypes.shape({
     // Properties of boards

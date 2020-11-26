@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const BoardThumbnail = ({
-  id, name, description, thumbnailPhoto, onLongPress, isSelected, navigation: { navigate },
+  id, name, description, thumbnailPhoto, onLongPress, isSelected
 }) => (
   <TouchableOpacity
     activeOpacity={0.7}
@@ -41,9 +41,6 @@ BoardThumbnail.propTypes = {
   thumbnailPhoto: PropTypes.string.isRequired,
   onLongPress: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
-export default withNavigation(BoardThumbnail);
+export default BoardThumbnail;

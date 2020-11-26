@@ -1,14 +1,37 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-// import Toolbar from '../../components/Toolbar';
-// import TaskList from '../../components/Tasks/TaskList';
-// import data from '../../resources/data.json';
+import Toolbar from '../../components/Toolbar';
+import TaskList from '../../components/Tasks/TaskList';
+import { getTaskListsByBoardId } from '../../services/taskListService';
+import data from '../../resources/data.json';
 
 class Board extends React.Component {
+  state = {
+    taskLists: [],
+    selectedTaskLists: [],
+    boardId: 0,
+    boardName: '',
+  }
+  async componentDidMount() {
+    const { navigation } = this.props;
+    const { boardId, boardName } = navigation.params;
+  }
+
   render() {
+    const { tasklists, selectedTaskLists, boardId } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        <Text>Hello from board!</Text>
+        <Toolbar hasSelectedItems={selectedTaskLists.length > 0}
+        onAdd={() => this.props.navigation.navigate('NewTaskList')}
+        />
+        <TaskList
+          onLongPress={(id) => this.onBoardLongPress(id)}
+          tasklists={
+            getTaskListsByBoardId(this.props.navigation.state.params.boardId)
+          }
+          selectedTaskLists={ selectedTaskLists }
+        />
+        <Text>{this.props.navigation.state.params.boardId}</Text>
       </View>
     );
   }

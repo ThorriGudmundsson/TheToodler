@@ -11,7 +11,12 @@ const StackNavigator = createStackNavigator({
       title: 'Boards',
     },
   },
-  NewBoard,
+  NewBoard: {
+    screen: NewBoard,
+    navigationOptions: {
+      title: 'Create board',
+    },
+  },
   Board: {
     screen: Board,
     navigationOptions: {

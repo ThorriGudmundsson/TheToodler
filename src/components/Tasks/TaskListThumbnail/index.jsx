@@ -1,19 +1,22 @@
 import React from 'react';
-import { Image, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { AntDesign } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const BoardThumbnail = ({
-  id, name, description, thumbnailPhoto, onLongPress, isSelected, navigation: { navigate },
+const TaskListThumbnail = ({
+  id, name, color, boardId, onLongPress, isSelected, navigation: { navigate },
 }) => (
   <TouchableOpacity
     activeOpacity={0.7}
     onLongPress={() => onLongPress(id)}
     onPress={() => navigate('Board', { boardId: id, boardName: name })}
   >
-    <View style={styles.boardThumbnailContainer}>
+    <View style={[styles.boardThumbnailContainer, {
+      backgroundColor: color,
+    }]}
+    >
       {
         isSelected
         ?
@@ -21,24 +24,18 @@ const BoardThumbnail = ({
         :
         <></>
       }
-      <Image
-        style={styles.image}
-        resizeMode="cover"
-        source={{ uri: thumbnailPhoto }}
-      />
       <View>
         <Text style={styles.thumbnailName}>{name}</Text>
-        <Text style={styles.thumbnailText}>{description}</Text>
       </View>
     </View>
   </TouchableOpacity>
 );
 
-BoardThumbnail.propTypes = {
+TaskListThumbnail.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  thumbnailPhoto: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  boardId: PropTypes.number.isRequired,
   onLongPress: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({
@@ -46,4 +43,4 @@ BoardThumbnail.propTypes = {
   }).isRequired,
 };
 
-export default withNavigation(BoardThumbnail);
+export default withNavigation(TaskListThumbnail);

@@ -1,25 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
-import Toolbar from '../../components/Toolbar';
-import TaskList from '../../components/Tasks/TaskList';
-import data from '../../resources/data.json';
+import { View, Text } from 'react-native';
+// import Toolbar from '../../components/Toolbar';
+// import TaskList from '../../components/Tasks/TaskList';
+// import data from '../../resources/data.json';
 
-class Boards extends React.Component {
-  async componentDidMount() {
-    const { navigation } = this.props;
-    const
-  }
+class Board extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Toolbar />
-        <BoardList
-          onLongPress={(id) => this.onImageLongPress(id)}
-          boards={data.boards}
-        />
+        <Text>Hello from board!</Text>
       </View>
     );
   }
 }
 
-export default Boards;
+export default Board;

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/Boards/BoardList';
+import { NavigationEvents } from 'react-navigation';
 import data from '../../resources/data.json';
 
 class Board extends React.Component {
@@ -13,6 +14,7 @@ class Board extends React.Component {
       selectedBoards: [],
     };
   }
+
 
   onBoardLongPress(id) {
     const { selectedBoards } = this.state;
@@ -26,17 +28,17 @@ class Board extends React.Component {
       });
     }
   }
-componentDitMount(){
-  const { boards } = this.sate;
-  this.setState( boards );
-}
-
 
   render() {
     const { selectedBoards, boards } = this.state;
 
     return (
       <View style={{ flex: 1 }}>
+        <NavigationEvents
+          // TODO maybe need to do some if test here
+          onWillFocus={payload => this.setState({ boards })}
+
+        />
         <Toolbar
           hasSelectedItems={selectedBoards.length > 0}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
@@ -46,13 +48,9 @@ componentDitMount(){
         <BoardList
           onLongPress={(id) => this.onBoardLongPress(id)}
           boards={boards}
-          selectedBoards={ selectedBoards }
+          selectedBoards={selectedBoards}
         />
-        <Text
-          onPress={() => this.setState({ boards })}
-        >
-           >> force refrech
-        </Text>
+
       </View>
     );
   }

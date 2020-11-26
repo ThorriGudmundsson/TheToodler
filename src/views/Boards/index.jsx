@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/Boards/BoardList';
-import { NavigationEvents } from 'react-navigation';
 import data from '../../resources/data.json';
 
 class Board extends React.Component {
@@ -14,7 +14,6 @@ class Board extends React.Component {
       selectedBoards: [],
     };
   }
-
 
   onBoardLongPress(id) {
     const { selectedBoards } = this.state;

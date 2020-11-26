@@ -10,11 +10,23 @@ class Board extends React.Component {
     taskLists: [],
     selectedTaskLists: [],
     boardId: 0,
-    boardName: '',
   }
   async componentDidMount() {
     const { navigation } = this.props;
     const { boardId, boardName } = navigation.params;
+  }
+
+  onBoardLongPress(id) {
+    const { selectedTaskLists } = this.state;
+    if (selectedTaskLists.indexOf(id) !== -1) {
+      this.setState({
+        selectedTaskLists: selectedTaskLists.filter((taskList) => taskList !== id),
+      });
+    } else {
+      this.setState({
+        selectedTaskLists: [...selectedTaskLists, id],
+      });
+    }
   }
 
   render() {
@@ -31,7 +43,6 @@ class Board extends React.Component {
           }
           selectedTaskLists={ selectedTaskLists }
         />
-        <Text>{this.props.navigation.state.params.boardId}</Text>
       </View>
     );
   }

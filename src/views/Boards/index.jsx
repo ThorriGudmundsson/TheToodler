@@ -21,11 +21,14 @@ class Board extends React.Component {
       });
     }
   }
+
   render() {
-    const { selectedBoards, boards } = this.state;
+    const { selectedBoards, boards, } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        <Toolbar hasSelectedItems={selectedBoards.length > 0}/>
+        <Toolbar hasSelectedItems={selectedBoards.length > 0}
+        onAdd={() => this.props.navigation.navigate('NewBoard')}
+        />
         <BoardList
           onLongPress={(id) => this.onBoardLongPress(id)}
           boards={boards}

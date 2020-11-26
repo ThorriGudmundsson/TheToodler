@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './styles';
 
-const Toolbar = ({ onAdd, onRemove, onEdit, hasSelectedItems }) => (
+const Toolbar = ({
+  onAdd, onRemove, onEdit, hasSelectedItems,
+}) => (
   <View styleName="horizontal" style={styles.toolbar}>
     <TouchableHighlight style={styles.toolbarAction} onPress={onAdd}>
       <Text style={styles.toolbarActionText}>Create board</Text>

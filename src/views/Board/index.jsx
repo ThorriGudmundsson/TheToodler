@@ -28,11 +28,9 @@ class Board extends React.Component {
   }
 
   removeList() {
-    console.log("hello from function")
     // TODO needs to delete also list and tasks linked to setInterval(function () {
     // TODO handle stuff if all are deleted
     const { selectedTaskLists, taskLists } = this.state;
-    console.log(taskLists)
 
     // Removes taskLists from list of taskLists if there ares some in selectedTaskLists
     if (selectedTaskLists.length > 0) {

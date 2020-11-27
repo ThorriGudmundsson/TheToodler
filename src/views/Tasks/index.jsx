@@ -7,7 +7,7 @@ import data from '../../resources/data.json';
 
 class Tasks extends React.Component {
   state = {
-    tasks: [],
+    tasks: data.tasks,
     selectedTasks: [],
     taskListId: 0,
     taskListName: '',
@@ -31,12 +31,35 @@ class Tasks extends React.Component {
     }
   }
 
+  removeTask() {
+    // TODO needs to delete also list and tasks linked to setInterval(function () {
+    // TODO handle stuff if all are deleted
+    const { selectedTasks, tasks } = this.state;
+    // Removes tasks from list of tasks if there ares some in selectedTasks
+    if (selectedTasks.length > 0) {
+      // inspect evrey selctect item
+      const removeFromtasks = selectedTasks.filter((item) => {
+        // loop throu evrey selctect item
+        tasks.forEach((obj, i) => {
+          // compare with every board object
+          if (obj.id === item) {
+            // delete from board
+            tasks.splice(i, 1);
+          }
+        });
+      });
+      selectedTasks.splice(0, selectedTasks.length);
+      this.setState({ tasks });
+    }
+  }
+
   render() {
     const { tasks, selectedTasks, taskListId } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <Toolbar hasSelectedItems={selectedTasks.length > 0}
         onAdd={() => this.props.navigation.navigate('NewTask')}
+        onRemove={() => this.removeTask()}
         />
         <TasksList
           onLongPress={(id) => this.onTaskLongPress(id)}

@@ -6,19 +6,13 @@ import { getTaskListsByBoardId } from '../../services/taskListService';
 import data from '../../resources/data.json';
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state = {
-      taskLists: [],
-      selectedTaskLists: [],
-      boardId: 0,
-    };
+  state = {
+    taskLists: [],
+    selectedTaskLists: [],
+    boardId: 0,
   }
 
-  componentDidMount() {
-    // console.log(this.props.navigation.params);
-
+  async componentDidMount() {
     const { navigation } = this.props;
     const { boardId, boardName } = navigation.params;
   }
@@ -41,14 +35,14 @@ class Board extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Toolbar hasSelectedItems={selectedTaskLists}
-        onAdd={() => this.props.navigation.navigate('NewTaskList')}
+          onAdd={() => this.props.navigation.navigate('NewTaskList')}
         />
         <TaskList
           onLongPress={(id) => this.onBoardLongPress(id)}
           tasklists={
             getTaskListsByBoardId(this.props.navigation.state.params.boardId)
           }
-          selectedTaskLists={ selectedTaskLists }
+          selectedTaskLists={selectedTaskLists}
         />
       </View>
     );

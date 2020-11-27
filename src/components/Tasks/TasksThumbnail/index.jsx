@@ -22,7 +22,7 @@ const TasksThumbnail = ({
       }
       <View>
         <Text style={styles.thumbnailName}>{name}</Text>
-        <Text style={styles.thumbnailText}>{name}</Text>
+        <Text style={styles.thumbnailText}>{description}</Text>
         {
           isFinished
           ?

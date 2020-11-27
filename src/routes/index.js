@@ -1,10 +1,10 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Boards from '../views/Boards';
-import InputComponent from '../views/NewBoard';
+import NewBoard from '../views/NewBoard';
 import Board from '../views/Board';
 import Tasks from '../views/Tasks';
-// import EditComponent from '../views/EditBoard';
+import EditBoard from '../views/EditBoard';
 
 const StackNavigator = createStackNavigator({
   Boards: {
@@ -14,7 +14,7 @@ const StackNavigator = createStackNavigator({
     },
   },
   NewBoard: {
-    screen: InputComponent,
+    screen: NewBoard,
     navigationOptions: {
       title: 'Create board',
     },
@@ -31,12 +31,12 @@ const StackNavigator = createStackNavigator({
       title: 'Tasks',
     },
   },
-  //EditBoard: {
-    //screen: EditComponent,
-    //navigationOptions: {
-      //title: 'Edit',
-    //},
-  //},
+  EditBoard: {
+    screen: EditBoard,
+    navigationOptions: {
+      title: 'Edit',
+    },
+  },
 });
 
 export default createAppContainer(StackNavigator);

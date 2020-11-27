@@ -5,7 +5,7 @@ import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/Boards/BoardList';
 import data from '../../resources/data.json';
 
-class Board extends React.Component {
+class Boards extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,6 +32,7 @@ class Board extends React.Component {
     // TODO needs to delete also list and tasks linked to setInterval(function () {
     // TODO handle stuff if all are deleted
     const { selectedBoards, boards } = this.state;
+    console.log(boards)
     // Removes Boards from list of boards if there ares some in selectedBoards
     if (selectedBoards.length > 0) {
       // inspect evrey selctect item
@@ -60,15 +61,15 @@ class Board extends React.Component {
         <NavigationEvents
           // TODO maybe need to do some if test here
           onWillFocus={(payload) => this.setState({ boards })}
-
         />
+
         <Toolbar
           hasSelectedItems={selectedBoards}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
           onRemove={() => this.removeBoard()}
-          onEdit={() => this.props.navigation.navigate('EditBoard')}
-
+          onEdit={() => this.props.navigation.navigate('EditBoard', { board: selectedBoards[0] })}
         />
+
         <BoardList
           onLongPress={(id) => this.onBoardLongPress(id)}
           boards={boards}
@@ -79,4 +80,4 @@ class Board extends React.Component {
   }
 }
 
-export default Board;
+export default Boards;

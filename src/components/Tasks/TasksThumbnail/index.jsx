@@ -5,18 +5,15 @@ import { AntDesign } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const TaskListThumbnail = ({
-  id, name, color, boardId, onLongPress, isSelected, navigation: { navigate },
+const TasksThumbnail = ({
+  id, name, description, isFinished, listId, onLongPress, isSelected, navigation: { navigate },
 }) => (
   <TouchableOpacity
     activeOpacity={0.7}
     onLongPress={() => onLongPress(id)}
     onPress={() => navigate('Tasks', { taskListId: id, taskListName: name })}
   >
-    <View style={[styles.boardThumbnailContainer, {
-      backgroundColor: color,
-    }]}
-    >
+    <View style={styles.taskThumbnailContainer}>
       {
         isSelected
         ?
@@ -26,16 +23,25 @@ const TaskListThumbnail = ({
       }
       <View>
         <Text style={styles.thumbnailName}>{name}</Text>
+        <Text style={styles.thumbnailText}>{name}</Text>
+        {
+          isFinished
+          ?
+          <Text style={styles.TaskIsFinished}>Done!</Text>
+          :
+          <></>
+        }
       </View>
     </View>
   </TouchableOpacity>
 );
 
-TaskListThumbnail.propTypes = {
+TasksThumbnail.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  boardId: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  isFinished: PropTypes.bool.isRequired,
+  listId: PropTypes.number.isRequired,
   onLongPress: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({
@@ -43,4 +49,4 @@ TaskListThumbnail.propTypes = {
   }).isRequired,
 };
 
-export default withNavigation(TaskListThumbnail);
+export default withNavigation(TasksThumbnail);

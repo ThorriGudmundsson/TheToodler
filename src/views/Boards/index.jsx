@@ -15,7 +15,6 @@ class Board extends React.Component {
     };
   }
 
-
   onBoardLongPress(id) {
     const { selectedBoards } = this.state;
     if (selectedBoards.indexOf(id) !== -1) {
@@ -29,6 +28,30 @@ class Board extends React.Component {
     }
   }
 
+  removeBoard() {
+    // TODO needs to delete also list and tasks linked to setInterval(function () {
+    // TODO handle stuff if all are deleted
+    const { selectedBoards, boards } = this.state;
+    // Removes Boards from list of boards if there ares some in selectedBoards
+    if (selectedBoards.length > 0) {
+      // inspect evrey selctect item
+      const removeFromBoards = selectedBoards.filter((item) => {
+        // loop throu evrey selctect item
+        boards.forEach((obj, i) => {
+          // compare with every board object
+          if (obj.id === item) {
+            // delete from board
+            boards.splice(i, 1);
+          }
+        });
+      });
+
+      // clean up and refreach
+      selectedBoards.splice(0, selectedBoards.length);
+      this.setState({ boards });
+    }
+  }
+
   render() {
     const { selectedBoards, boards } = this.state;
 
@@ -36,13 +59,13 @@ class Board extends React.Component {
       <View style={{ flex: 1 }}>
         <NavigationEvents
           // TODO maybe need to do some if test here
-          onWillFocus={payload => this.setState({ boards })}
+          onWillFocus={(payload) => this.setState({ boards })}
 
         />
         <Toolbar
           hasSelectedItems={selectedBoards.length > 0}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
-          onRemove={() => {}}
+          onRemove={() => this.removeBoard()}
           onEdit={() => {}}
 
         />

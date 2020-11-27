@@ -4,18 +4,17 @@ import {
 } from 'react-native';
 import data from '../../resources/data.json';
 import styles from '../../styles/fields';
-import colorPickStyles from './styles.js';
+import colorPickStyles from './styles';
 
 function onAdd(somedata, nameField, colorPick, boardIdF) {
   let nameF = nameField;
-  console.log(data.lists);
-  let nextId = 0; // in case that boards are emty
+  let nextId = 0; // in case that list is emty
 
   if (somedata.length > 0) {
     nextId = somedata[somedata.length - 1].id + 1;
   }
   if (nameF === '') {
-    nameF = `My Board ( ${nextId} )`;
+    nameF = `My Task List ( ${nextId} )`;
   }
 
   somedata.push({
@@ -24,7 +23,6 @@ function onAdd(somedata, nameField, colorPick, boardIdF) {
     name: nameF,
     color: colorPick,
   });
-  console.log(data.lists);
 }
 
 
@@ -46,13 +44,13 @@ class NewTaskList extends React.Component {
 
   render() {
     const { name, colorPick, boardId } = this.state;
-    console.log(data.lists);
+
 
     return (
       <View>
         <TextInput
           style={styles.inputfield}
-          placeholder="Task Title"
+          placeholder="Task List Title"
           value={this.state.name}
           onChangeText={(text) => this.genericInputHandler('name', text)}
         />

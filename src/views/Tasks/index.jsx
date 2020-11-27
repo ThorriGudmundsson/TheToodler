@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import Toolbar from '../../components/Toolbar';
 import TasksList from '../../components/Tasks/TasksList';
 import { getTasksByTaskListId } from '../../services/taskService';
@@ -9,7 +10,7 @@ class Tasks extends React.Component {
   state = {
     tasks: data.tasks,
     selectedTasks: [],
-    taskListId: 0,
+    taskListId: this.props.navigation.state.params.taskListId,
     taskListName: '',
   }
 
@@ -32,8 +33,7 @@ class Tasks extends React.Component {
   }
 
   removeTask() {
-    // TODO needs to delete also list and tasks linked to setInterval(function () {
-    // TODO handle stuff if all are deleted
+
     const { selectedTasks, tasks } = this.state;
     // Removes tasks from list of tasks if there ares some in selectedTasks
     if (selectedTasks.length > 0) {
@@ -57,8 +57,13 @@ class Tasks extends React.Component {
     const { tasks, selectedTasks, taskListId } = this.state;
     return (
       <View style={{ flex: 1 }}>
+        <NavigationEvents
+        // TODO maybe need to do some if test here
+        onWillFocus={(payload) => this.setState({ taskListId })}
+
+        />
         <Toolbar hasSelectedItems={selectedTasks.length > 0}
-        onAdd={() => this.props.navigation.navigate('NewTask')}
+        onAdd={() => this.props.navigation.navigate('NewTask', { taskListId })}
         onRemove={() => this.removeTask()}
         />
         <TasksList

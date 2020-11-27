@@ -10,15 +10,16 @@ import styles from '../../styles/fields';
 function onEdit(editValues) {
   const parentIndex = data.lists.findIndex((taskList) => taskList.id === editValues.taskListId);
 
-  console.log(data.boards[parentIndex]);
+  console.log(parentIndex);
+  console.log(data.lists[parentIndex]);
 
-  data.boards[parentIndex] = {
+  data.lists[parentIndex] = {
     id: editValues.taskListId,
     name: editValues.name,
     color: editValues.color,
-    boardId: editValues.boardId,
+    boardId: editValues.parentBoardId,
   };
-  console.log(data.boards[parentIndex]);
+  console.log(data.lists[parentIndex]);
 }
 
 class EditTaskList extends React.Component {
@@ -27,7 +28,7 @@ class EditTaskList extends React.Component {
 
     this.state = {
       name: '',
-      color: '#ffffff', // Default color
+      color: '',
       colors: [
         { label: 'White', value: '#ffffff' },
         { label: 'Green', value: '#00ff00' },
@@ -56,7 +57,7 @@ class EditTaskList extends React.Component {
   }
 
   updateColor(color) {
-    this.setState({ color }, () => {console.log(this.state.color);});
+    this.setState({ color });
   }
 
   render() {
@@ -72,11 +73,15 @@ class EditTaskList extends React.Component {
         <Picker
           selectedValue={this.state.color}
           onValueChange={(value) => this.updateColor(value)}
+          backgroundColor={this.state.color}
         >
           {
             data.lists
               .map((taskList) => (
-                <Picker.Item label={taskList.color} value={taskList.value} />
+                <Picker.Item
+                  label={taskList.id.toString()}
+                  value={taskList.color}
+                />
               ))
           }
         </Picker>

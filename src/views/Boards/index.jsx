@@ -32,6 +32,7 @@ class Board extends React.Component {
     // TODO needs to delete also list and tasks linked to setInterval(function () {
     // TODO handle stuff if all are deleted
     const { selectedBoards, boards } = this.state;
+    console.log(boards)
     // Removes Boards from list of boards if there ares some in selectedBoards
     if (selectedBoards.length > 0) {
       // inspect evrey selctect item

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, TouchableHighlight, TextInput, Image,
+  View, Text, TouchableHighlight, TextInput, 
 } from 'react-native';
 import data from '../../resources/data.json';
 import styles from '../../styles/fields';

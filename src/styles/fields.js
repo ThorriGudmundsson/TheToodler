@@ -23,4 +23,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
   },
+  helpText: {
+    fontSize: 20,
+    fontWeight: '500',
+    textAlign: 'center',
+    color: '#996633',
+  },
 });

@@ -1,15 +1,23 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TextInput, Image } from 'react-native';
-import Toolbar from '../../components/Toolbar';
-import NewBoardCreation from '../../components/Boards/NewBoardCreation';
+import { View, Text, TouchableHighlight, TextInput, Image} from 'react-native';
 import data from '../../resources/data.json';
+import styles from '../../styles/fields';
+
 //import ImportImages from '../Images';
 
 function onAdd(somedata, nameField, descriptionField, photoURLField) {
   let nextId = 0; // in case that boards are emty
+  const defaultPhoto = 'https://5.imimg.com/data5/MC/OH/MY-15542396/green-school-board-500x500.jpg'
   if (somedata.length > 0) {
     nextId = somedata[somedata.length - 1].id + 1;
   }
+  if (nameField === '') {
+    nameField = `My Board ( ${nextId} )`;
+  }
+  if (photoURLField === '') {
+    photoURLField = defaultPhoto;
+  }
+
 
   somedata.push({
     id: nextId,
@@ -18,28 +26,31 @@ function onAdd(somedata, nameField, descriptionField, photoURLField) {
     description:  descriptionField,
   });
 
+
 }
 
 class InputComponent extends React.Component {
-  state = {
-        name: '',
-        description: '',
-        photoURL:'https://5.imimg.com/data5/MC/OH/MY-15542396/green-school-board-500x500.jpg'
-    }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+            name: '',
+            description: '',
+            photoURL:''
+        }
+  }
+
+
     genericInputHandler(name, value) {
         this.setState({ [ name ]: value });
     }
 
     render() {
+
         return (
             <View>
-                <TextInput
-                    style={{
-                      margin: 20,
-                      height: 40,
-                      borderColor: 'gray',
-                      borderWidth: 1
-                    }}
+              <TextInput
+                    style={styles.inputfield}
                     placeholder="Name the board"
                     value={ this.state.name}
                     onChangeText={ text => this.genericInputHandler('name', text) } />
@@ -48,37 +59,26 @@ class InputComponent extends React.Component {
 
 
               <TextInput
-                style={{
-                  margin: 20,
-                  height: 40,
-                  borderColor: 'gray',
-                  borderWidth: 2
-                }}
+                style={styles.inputfield}
                 placeholder="Add description"
                 value={ this.state.description}
                 secureTestEntry={ true }
                 onChangeText={ text => this.genericInputHandler('description', text) } />
 
                 <TextInput
-                  style={{
-                    margin: 20,
-                    height: 40,
-                    borderColor: 'gray',
-                    borderWidth: 2
-                  }}
-
+                  style={styles.inputfield}
+                  placeholder="http... (paste in photo url) or leave blank for default"
                   value={ this.state.photoURL}
                   secureTestEntry={ true }
                   onChangeText={ text => this.genericInputHandler('photoURL', text) } />
 
-
-                <TouchableHighlight>
-                    <Text>Add image (tempurary not in use)</Text>
+                <TouchableHighlight
+                onPress={() => onAdd(data.boards, this.state.name,  this.state.description, this.state.photoURL)}
+                  style={styles.saveButton}
+                >
+                  <Text style={styles.saveButtonText}>Save</Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight onPress={() => onAdd(data.boards, this.state.name,  this.state.description, this.state.photoURL)}>
-                  <Text>Save</Text>
-                </TouchableHighlight>
 
             </View>
         );
@@ -86,6 +86,5 @@ class InputComponent extends React.Component {
 }
 
 export default InputComponent;
-
 
 // export default NewBoard;

@@ -19,4 +19,9 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
+  toolbarInactiveActionText: {
+    fontWeight: 'bold',
+    color: 'rgba(155, 155, 155, 0.5)',
+    fontSize: 16,
+  },
 });

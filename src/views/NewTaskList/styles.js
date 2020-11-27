@@ -9,7 +9,6 @@ export const colorButton = {
   borderRadius: 15,
 };
 
-
 export default StyleSheet.create({
   helpText: {
     fontSize: 20,

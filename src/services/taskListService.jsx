@@ -6,5 +6,5 @@ export function getTaskListsByBoardId(boardId) {
 }
 
 export function getTaskListById(taskListId) {
-  return data.lists.find((listItem) => listItem.taskListId === taskListId);
+  return data.lists.find((listItem) => listItem.id === taskListId);
 }

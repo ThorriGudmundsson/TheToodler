@@ -62,7 +62,7 @@ class Board extends React.Component {
         <Toolbar hasSelectedItems={selectedTaskLists}
         onAdd={() => this.props.navigation.navigate('NewTaskList', { boardId })}
         onRemove={() => this.removeList()}
-        onEdit={() => this.props.navigation.navigate('EditTaskList', { taskList: selectedTaskLists[0] })}
+        onEdit={() => this.props.navigation.navigate('EditTaskList', { taskListId: selectedTaskLists[0] })}
         />
         <TaskList
           onLongPress={(id) => this.onBoardLongPress(id)}

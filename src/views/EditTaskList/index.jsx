@@ -7,17 +7,18 @@ import data from '../../resources/data.json';
 import { getTaskListById } from '../../services/taskListService';
 import styles from '../../styles/fields';
 
-function onEdit(parentBoardId, editValues) {
-  let defaultPhoto = 'https://5.imimg.com/data5/MC/OH/MY-15542396/green-school-board-500x500.jpg';
+function onEdit(editValues) {
+  const parentIndex = data.lists.findIndex((taskList) => taskList.id === editValues.taskListId);
 
-  if (editValues.thumbnailPhoto !== '') { defaultPhoto = editValues.thumbnailPhoto; }
-  const parentIndex = data.boards.findIndex((board) => board.id === parentBoardId);
+  console.log(data.boards[parentIndex]);
 
   data.boards[parentIndex] = {
-    id: parentBoardId,
+    id: editValues.taskListId,
     name: editValues.name,
     color: editValues.color,
+    boardId: editValues.boardId,
   };
+  console.log(data.boards[parentIndex]);
 }
 
 class EditTaskList extends React.Component {
@@ -26,27 +27,27 @@ class EditTaskList extends React.Component {
 
     this.state = {
       name: '',
-      color: '',
+      color: '#ffffff', // Default color
       colors: [
-        { label: 'White', value: "#ffffff"},
-        { label: 'Green', value: "#00ff00"},
-        { label: 'Light Grey', value: "#dddddd"},
-        { label: 'Grey', value: "#cccccc"},
-        { label: 'Dark Grey', value: "#555555"},
-        { label: 'Red', value: "#ff0000"},
-        { label: 'Blue', value: "#0000ff"},
-        { label: 'Pink', value: "#ff00ff"},
-      ]
+        { label: 'White', value: '#ffffff' },
+        { label: 'Green', value: '#00ff00' },
+        { label: 'Light Grey', value: '#dddddd' },
+        { label: 'Grey', value: '#cccccc' },
+        { label: 'Dark Grey', value: '#555555' },
+        { label: 'Red', value: '#ff0000' },
+        { label: 'Blue', value: '#0000ff' },
+        { label: 'Pink', value: '#ff00ff' },
+      ],
     };
   }
 
   componentDidMount() {
-    const taskList = getTaskListById(this.props.navigation.state.params.taskList);
-    console.log(taskList);
+    const taskList = getTaskListById(this.props.navigation.state.params.taskListId);
     this.setState({
       name: taskList.name,
       color: taskList.color,
       parentBoardId: taskList.boardId,
+      taskListId: taskList.id,
     });
   }
 
@@ -55,7 +56,7 @@ class EditTaskList extends React.Component {
   }
 
   updateColor(color) {
-    this.setState({ color });
+    this.setState({ color }, () => {console.log(this.state.color);});
   }
 
   render() {
@@ -68,7 +69,7 @@ class EditTaskList extends React.Component {
           onChangeText={(text) => this.genericInputHandler('name', text)}
         />
 
-        {/* <Picker
+        <Picker
           selectedValue={this.state.color}
           onValueChange={(value) => this.updateColor(value)}
         >
@@ -78,11 +79,10 @@ class EditTaskList extends React.Component {
                 <Picker.Item label={taskList.color} value={taskList.value} />
               ))
           }
-        </Picker> */}
+        </Picker>
 
         <TouchableHighlight
           onPress={() => onEdit(
-            this.state.parentBoardId,
             this.state,
           )}
           style={styles.saveButton}

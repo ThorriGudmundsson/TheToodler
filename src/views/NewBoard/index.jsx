@@ -19,14 +19,6 @@ function onAdd(somedata, nameField, descriptionField, photoURLField) {
   });
 
 }
-class InputComponent extends React.Component {
-  state = {
-        name: '',
-        description: ''
-    }
-    genericInputHandler(name, value) {
-        this.setState({ [ name ]: value });
-    }
 
 class InputComponent extends React.Component {
   state = {

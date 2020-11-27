@@ -66,7 +66,7 @@ class Board extends React.Component {
           hasSelectedItems={selectedBoards}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
           onRemove={() => this.removeBoard()}
-          onEdit={() => {}}
+          onEdit={() => this.props.navigation.navigate('EditBoard')}
 
         />
         <BoardList

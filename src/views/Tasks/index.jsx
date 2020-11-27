@@ -12,6 +12,7 @@ class Tasks extends React.Component {
     taskListId: 0,
     taskListName: '',
   }
+
   async componentDidMount() {
     const { navigation } = this.props;
     const { taskListId, taskListName } = navigation.params;

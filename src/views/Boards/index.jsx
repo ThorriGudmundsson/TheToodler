@@ -5,7 +5,7 @@ import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/Boards/BoardList';
 import data from '../../resources/data.json';
 
-class Board extends React.Component {
+class Boards extends React.Component {
   constructor(props) {
     super(props);
 
@@ -80,4 +80,4 @@ class Board extends React.Component {
   }
 }
 
-export default Board;
+export default Boards;

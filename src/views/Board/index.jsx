@@ -70,7 +70,7 @@ class Board extends React.Component {
           tasklists={
             getTaskListsByBoardId(this.props.navigation.state.params.boardId)
           }
-          selectedTaskLists={ selectedTaskLists }
+          selectedTaskLists={selectedTaskLists}
         />
       </View>
     );

@@ -9,23 +9,18 @@ export default StyleSheet.create({
     color: '#996633',
     backgroundColor: '#E6E6D1',
     borderRadius: 16,
-
   },
   saveButton: {
     padding: 20,
     margin: 10,
     height: 66,
-
     backgroundColor: 'green',
     borderRadius: 30,
-
   },
-  saveButtonText:
-  {
+  saveButtonText: {
     fontSize: 20,
     fontWeight: '900',
     textAlign: 'center',
     color: '#fff',
-
   },
 });

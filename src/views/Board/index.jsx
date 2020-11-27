@@ -13,10 +13,6 @@ class Board extends React.Component {
     selectedTaskLists: [],
     boardId: 0,
   }
-  async componentDidMount() {
-    const { navigation } = this.props;
-    const { boardId, boardName } = navigation.params;
-  }
 
   onBoardLongPress(id) {
     const { selectedTaskLists } = this.state;

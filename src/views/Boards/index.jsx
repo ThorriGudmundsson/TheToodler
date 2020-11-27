@@ -61,15 +61,15 @@ class Board extends React.Component {
         <NavigationEvents
           // TODO maybe need to do some if test here
           onWillFocus={(payload) => this.setState({ boards })}
-
         />
+
         <Toolbar
           hasSelectedItems={selectedBoards}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
           onRemove={() => this.removeBoard()}
-          onEdit={() => this.props.navigation.navigate('EditBoard')}
-
+          onEdit={() => this.props.navigation.navigate('EditBoard', { board: selectedBoards[0] })}
         />
+
         <BoardList
           onLongPress={(id) => this.onBoardLongPress(id)}
           boards={boards}

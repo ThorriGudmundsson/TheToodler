@@ -5,6 +5,7 @@ import NewBoard from '../views/NewBoard';
 import Board from '../views/Board';
 import Tasks from '../views/Tasks';
 import EditBoard from '../views/EditBoard';
+import EditTaskList from '../views/EditTaskList';
 
 const StackNavigator = createStackNavigator({
   Boards: {
@@ -35,6 +36,12 @@ const StackNavigator = createStackNavigator({
     screen: EditBoard,
     navigationOptions: {
       title: 'Edit',
+    },
+  },
+  EditTaskList: {
+    screen: EditTaskList,
+    navigationOptions: {
+      titles: 'EditTaskList',
     },
   },
 });

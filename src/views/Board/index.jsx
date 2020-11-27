@@ -28,17 +28,15 @@ class Board extends React.Component {
   }
 
   removeList() {
-    console.log("hello from function")
     // TODO needs to delete also list and tasks linked to setInterval(function () {
     // TODO handle stuff if all are deleted
     const { selectedTaskLists, taskLists } = this.state;
-    console.log(taskLists)
 
     // Removes taskLists from list of taskLists if there ares some in selectedTaskLists
     if (selectedTaskLists.length > 0) {
-      // inspect evrey selctect item
+      // inspect every selected item
       const removeFromtaskLists = selectedTaskLists.filter((item) => {
-        // loop throu evrey selctect item
+        // loop through every selected item
         taskLists.forEach((obj, i) => {
           // compare with every board object
           if (obj.id === item) {
@@ -61,9 +59,10 @@ class Board extends React.Component {
         onWillFocus={(payload) => this.setState({ boardId })}
 
       />
-        <Toolbar hasSelectedItems={selectedTaskLists.length > 0}
+        <Toolbar hasSelectedItems={selectedTaskLists}
         onAdd={() => this.props.navigation.navigate('NewTaskList')}
         onRemove={() => this.removeList()}
+        onEdit={() => this.props.navigation.navigate('EditTaskList', { taskList: selectedTaskLists[0] })}
         />
         <TaskList
           onLongPress={(id) => this.onBoardLongPress(id)}

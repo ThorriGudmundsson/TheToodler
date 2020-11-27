@@ -11,7 +11,6 @@ const TasksThumbnail = ({
   <TouchableOpacity
     activeOpacity={0.7}
     onLongPress={() => onLongPress(id)}
-    onPress={() => navigate('Tasks', { taskListId: id, taskListName: name })}
   >
     <View style={styles.taskThumbnailContainer}>
       {

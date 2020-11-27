@@ -8,7 +8,7 @@ const Toolbar = ({
 }) => (
   <View styleName="horizontal" style={styles.toolbar}>
     <TouchableHighlight style={styles.toolbarAction} onPress={onAdd}>
-      <Text style={styles.toolbarActionText}>Create board</Text>
+      <Text style={styles.toolbarActionText}>Create</Text>
     </TouchableHighlight>
     <TouchableHighlight
       style={styles.toolbarAction}
@@ -19,7 +19,7 @@ const Toolbar = ({
         color: '#fff',
       }]}
       >
-        Delete board
+        Delete
       </Text>
     </TouchableHighlight>
     <TouchableHighlight
@@ -31,7 +31,7 @@ const Toolbar = ({
         color: '#fff',
       }]}
       >
-        Edit board
+        Edit
       </Text>
     </TouchableHighlight>
   </View>

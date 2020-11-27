@@ -13,17 +13,26 @@ const Toolbar = ({
     <TouchableHighlight
       style={styles.toolbarAction}
       onPress={onRemove}
-      disabled={!hasSelectedItems}
+      disabled={hasSelectedItems.length < 1}
     >
-      <Text style={[styles.toolbarActionText, hasSelectedItems ? {} : {
-        color: 'rgba(155, 155, 155, 0.5)',
+      <Text style={[styles.toolbarInactiveActionText, hasSelectedItems < 1 ? {} : {
+        color: '#fff',
       }]}
       >
         Delete board
       </Text>
     </TouchableHighlight>
-    <TouchableHighlight style={styles.toolbarAction} onPress={onEdit}>
-      <Text style={styles.toolbarActionText}>Edit board</Text>
+    <TouchableHighlight
+      style={styles.toolbarAction}
+      onPress={onEdit}
+      disabled={hasSelectedItems.length !== 1}
+    >
+      <Text style={[styles.toolbarInactiveActionText, hasSelectedItems.length !== 1 ? {} : {
+        color: '#fff',
+      }]}
+      >
+        Edit board
+      </Text>
     </TouchableHighlight>
   </View>
 );
@@ -32,7 +41,7 @@ Toolbar.propTypes = {
   onAdd: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  hasSelectedItems: PropTypes.bool.isRequired,
+  hasSelectedItems: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Toolbar;

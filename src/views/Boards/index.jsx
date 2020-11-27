@@ -63,7 +63,7 @@ class Board extends React.Component {
 
         />
         <Toolbar
-          hasSelectedItems={selectedBoards.length > 0}
+          hasSelectedItems={selectedBoards}
           onAdd={() => this.props.navigation.navigate('NewBoard')}
           onRemove={() => this.removeBoard()}
           onEdit={() => {}}

@@ -6,7 +6,7 @@ import data from '../../resources/data.json';
 import styles from '../../styles/fields';
 import colorPickStyles from './styles';
 
-function onAdd(somedata, nameField, colorPick, boardIdF) {
+function onAdd(somedata, nameField, colorPick, boardIdF, goback) {
   let nameF = nameField;
   let nextId = 0; // in case that list is emty
 
@@ -23,8 +23,9 @@ function onAdd(somedata, nameField, colorPick, boardIdF) {
     name: nameF,
     color: colorPick,
   });
-}
 
+  goback.goBack();
+}
 
 class NewTaskList extends React.Component {
   constructor(props) {
@@ -87,7 +88,7 @@ class NewTaskList extends React.Component {
         </Picker>
 
         <TouchableHighlight
-          onPress={() => onAdd(data.lists, name, colorPick, boardId)}
+          onPress={() => onAdd(data.lists, name, colorPick, boardId, this.props.navigation,)}
           style={styles.saveButton}
         >
           <Text style={styles.saveButtonText}>Save</Text>

@@ -50,7 +50,7 @@ const StackNavigator = createStackNavigator({
   EditTaskList: {
     screen: EditTaskList,
     navigationOptions: {
-      titles: 'EditTaskList',
+      titles: 'Edit Task-List',
     },
   },
   NewTask: {
@@ -62,7 +62,7 @@ const StackNavigator = createStackNavigator({
   EditTask: {
     screen: EditTask,
     navigationOptions: {
-      titles: 'EditTask',
+      titles: 'Edit Task',
     },
   },
 });

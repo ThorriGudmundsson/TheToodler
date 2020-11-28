@@ -5,6 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor: '#c1f0f0',
+    backgroundColor: '#555',
   },
 });

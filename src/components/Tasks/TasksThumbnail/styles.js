@@ -2,24 +2,30 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   thumbnailName: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '800',
     flexDirection: 'column',
-    margin: 8,
+    paddingTop: 10,
+    paddingLeft: 20,
+
+
   },
   thumbnailText: {
-    fontSize: 11,
-    fontWeight: 'normal',
+    fontSize: 16,
+    fontWeight: '600',
     flexDirection: 'column',
-    padding: 8,
+    paddingTop: 0,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+
   },
   taskThumbnailContainer: {
     flexDirection: 'row',
     width: 'auto',
     height: 'auto',
-    borderWidth: 1,
-    borderColor: 'black',
-    margin: 4,
+    backgroundColor:'#d4c65d',
+    margin: 10,
   },
   checkmark: {
     position: 'absolute',
@@ -28,9 +34,17 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   TaskIsFinished: {
-    flexDirection: 'column',
-    margin: 8,
+    position: 'absolute',
+    top: 40,
+    right: -75,
+    color: '#fff',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '900',
+    padding: 10,
+    backgroundColor: '#000',
+    borderTopLeftRadius:20,
+    borderBottomRightRadius:20,
+
+
   },
 });

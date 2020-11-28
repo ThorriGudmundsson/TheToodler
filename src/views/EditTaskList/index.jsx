@@ -7,11 +7,8 @@ import data from '../../resources/data.json';
 import { getTaskListById } from '../../services/taskListService';
 import styles from '../../styles/fields';
 
-function onEdit(editValues) {
+function onEdit(editValues, goback) {
   const parentIndex = data.lists.findIndex((taskList) => taskList.id === editValues.taskListId);
-
-  console.log(parentIndex);
-  console.log(data.lists[parentIndex]);
 
   data.lists[parentIndex] = {
     id: editValues.taskListId,
@@ -19,7 +16,8 @@ function onEdit(editValues) {
     color: editValues.color,
     boardId: editValues.parentBoardId,
   };
-  console.log(data.lists[parentIndex]);
+
+  goback.goBack();
 }
 
 class EditTaskList extends React.Component {
@@ -92,6 +90,7 @@ class EditTaskList extends React.Component {
         <TouchableHighlight
           onPress={() => onEdit(
             this.state,
+             this.props.navigation,
           )}
           style={styles.saveButton}
         >

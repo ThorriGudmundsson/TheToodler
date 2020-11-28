@@ -30,18 +30,14 @@ const TasksList = ({ tasks, onLongPress, selectedTasks }) => (
 );
 
 TasksList.propTypes = {
-  // Boards
   tasks: PropTypes.arrayOf(PropTypes.shape({
-    // Properties of boards
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    // A board description is optional
     description: PropTypes.string.isRequired,
     isFinished: PropTypes.bool.isRequired,
     listId: PropTypes.number.isRequired,
   })).isRequired,
   onLongPress: PropTypes.func.isRequired,
-  // Selected boards have their id stored in array as number
   selectedTasks: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 

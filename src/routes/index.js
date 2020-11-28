@@ -8,6 +8,7 @@ import NewTaskList from '../views/NewTaskList';
 import EditBoard from '../views/EditBoard';
 import EditTaskList from '../views/EditTaskList';
 import NewTask from '../views/NewTask';
+import EditTask from '../views/EditTask';
 
 const StackNavigator = createStackNavigator({
   Boards: {
@@ -56,6 +57,12 @@ const StackNavigator = createStackNavigator({
     screen: NewTask,
     navigationOptions: {
       titles: 'Create Task',
+    },
+  },
+  EditTask: {
+    screen: EditTask,
+    navigationOptions: {
+      titles: 'EditTask',
     },
   },
 });

@@ -8,7 +8,6 @@ import styles from '../../styles/fields';
 
 function onAdd(somedata, nameField, descriptionField, isfinishedF, listIdF, goback) {
   let nameF = nameField;
-  console.log(descriptionField);
   let nextId = 0; // in case that Tasks are emty
 
   if (somedata.length > 0) {
@@ -50,7 +49,6 @@ class NewTask extends React.Component {
     const {
       name, description, listId, isFinished,
     } = this.state;
-    console.log(data.tasks);
 
     return (
       <View>

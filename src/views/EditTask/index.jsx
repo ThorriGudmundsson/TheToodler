@@ -8,9 +8,6 @@ import styles from '../../styles/fields';
 function onEdit(editValues, goback) {
   const parentIndex = data.tasks.findIndex((task) => task.id === editValues.taskId);
 
-  console.log(editValues);
-  console.log(parentIndex);
-
   data.tasks[parentIndex] = {
     id: editValues.taskId,
     name: editValues.name,

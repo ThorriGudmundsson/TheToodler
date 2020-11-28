@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, TouchableHighlight, TextInput,
+  View, Text, TouchableHighlight, TextInput, Picker
 } from 'react-native';
 import data from '../../resources/data.json';
 import styles from '../../styles/fields';
@@ -32,8 +32,18 @@ class NewTaskList extends React.Component {
 
     this.state = {
       name: '',
-      colorPick: '#ffffff',
+      colorPick: '#ff00ff',
       boardId: this.props.navigation.state.params.boardId,
+      colors: [
+        { label: 'White', value: '#ffffff' },
+        { label: 'Green', value: '#00ff00' },
+        { label: 'Light Grey', value: '#dddddd' },
+        { label: 'Grey', value: '#cccccc' },
+        { label: 'Dark Grey', value: '#555555' },
+        { label: 'Red', value: '#ff0000' },
+        { label: 'Blue', value: '#0000ff' },
+        { label: 'Pink', value: '#ff00ff' },
+      ],
 
     };
   }
@@ -42,76 +52,39 @@ class NewTaskList extends React.Component {
     this.setState({ [name]: value });
   }
 
-  render() {
-    const { name, colorPick, boardId } = this.state;
+  updateColor(colorPick) {
+    this.setState({ colorPick });
+  }
 
+  render() {
+    const { name, colorPick, boardId, colors } = this.state;
 
     return (
       <View>
         <TextInput
           style={styles.inputfield}
           placeholder="Task List Title"
-          value={this.state.name}
+          value={name}
           onChangeText={(text) => this.genericInputHandler('name', text)}
         />
-        <Text style={colorPickStyles.helpText}>pick color</Text>
+        <Text style={styles.helpText}>pick color</Text>
 
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#ffffff')}
-          style={colorPickStyles.cwhite}
+        <Picker
+          selectedValue={colorPick}
+          onValueChange={(value) => this.updateColor(value)}
+          backgroundColor={colorPick}
         >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#555555')}
-          style={colorPickStyles.cdark}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#ebb734')}
-          style={colorPickStyles.cyello}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#ff0000')}
-          style={colorPickStyles.cred}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#00ff00')}
-          style={colorPickStyles.cgreen}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#0000ff')}
-          style={colorPickStyles.cblue}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#ff00ff')}
-          style={colorPickStyles.cpurp}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#cccccc')}
-          style={colorPickStyles.cgrey}
-        >
-          <Text />
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.genericInputHandler('colorPick', '#dddddd')}
-          style={colorPickStyles.clight}
-        >
-          <Text />
-        </TouchableHighlight>
+          {
+            colors
+              .map((taskList) => (
 
-
+                <Picker.Item
+                  label={taskList.label}
+                  value={taskList.value}
+                />
+              ))
+          }
+        </Picker>
 
         <TouchableHighlight
           onPress={() => onAdd(data.lists, name, colorPick, boardId)}

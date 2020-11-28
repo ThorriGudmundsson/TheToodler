@@ -2,28 +2,26 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   thumbnailName: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '600',
     flexDirection: 'column',
-    margin: 8,
+    padding: 16,
   },
   thumbnailText: {
     fontSize: 11,
     fontWeight: 'normal',
     flexDirection: 'column',
-    padding: 8,
+    padding: 10,
   },
   boardThumbnailContainer: {
     flexDirection: 'row',
     width: 'auto',
-    height: 'auto',
-    borderWidth: 1,
-    borderColor: 'black',
+    height: 60,
     margin: 4,
   },
   checkmark: {
     position: 'absolute',
-    top: 15,
+    top: 20,
     right: 15,
     fontSize: 20,
   },

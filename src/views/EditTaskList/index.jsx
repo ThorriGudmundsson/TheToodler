@@ -90,7 +90,7 @@ class EditTaskList extends React.Component {
         <TouchableHighlight
           onPress={() => onEdit(
             this.state,
-             this.props.navigation,
+            this.props.navigation,
           )}
           style={styles.saveButton}
         >

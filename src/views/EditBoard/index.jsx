@@ -7,7 +7,7 @@ import data from '../../resources/data.json';
 import { getBoardById } from '../../services/boardService';
 import styles from '../../styles/fields';
 
-function onEdit(parentBoardId, editValues) {
+function onEdit(parentBoardId, editValues, goback) {
   let defaultPhoto = 'https://5.imimg.com/data5/MC/OH/MY-15542396/green-school-board-500x500.jpg';
 
   if (editValues.thumbnailPhoto !== '') { defaultPhoto = editValues.thumbnailPhoto; }
@@ -19,6 +19,8 @@ function onEdit(parentBoardId, editValues) {
     thumbnailPhoto: defaultPhoto,
     description: editValues.description,
   };
+  
+  goback.goBack();
 }
 
 class EditBoard extends React.Component {
@@ -76,6 +78,7 @@ class EditBoard extends React.Component {
           onPress={() => onEdit(
             this.state.parentBoardId,
             this.state,
+            this.props.navigation,
           )}
           style={styles.saveButton}
         >

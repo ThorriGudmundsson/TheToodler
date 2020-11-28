@@ -1,14 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TextInput, Picker } from 'react-native';
+import { View, Text, TouchableHighlight, TextInput, Picker, Switch } from 'react-native';
 import data from '../../resources/data.json';
-import { getTasksByTaskListId } from '../../services/taskService';
+import { getTaskById } from '../../services/taskService';
+import { getTaskListsByBoardId, getTaskListById } from '../../services/taskListService';
 import styles from '../../styles/fields';
 
-function onEdit(editValues) {
+function onEdit(editValues, goback) {
   const parentIndex = data.lists.findIndex((task) => task.id === editValues.taskId);
-
-  console.log(parentIndex);
-  console.log(data.tasks[parentIndex]);
 
   data.tasks[parentIndex] = {
     id: editValues.taskId,
@@ -17,7 +15,8 @@ function onEdit(editValues) {
     isFinished: editValues.isFinished,
     listId: editValues.parentListId,
   };
-  console.log(data.tasks[parentIndex]);
+
+  goback.goBack();
 }
 
 class EditTask extends React.Component {
@@ -28,17 +27,32 @@ class EditTask extends React.Component {
       name: '',
       description: '',
       isFinished: false,
+      parentTaskList: {},
+      taskListsInBoard: [],
     };
   }
 
   componentDidMount() {
-    const task = getTasksByTaskListId(this.props.navigation.state.params.taskId);
+    const task = getTaskById(this.props.navigation.state.params.taskId);
+    const taskList = getTaskListById(task.listId);
+    const boardTaskLists = getTaskListsByBoardId(taskList.boardId);
     this.setState({
       name: task.name,
       description: task.description,
+      isFinished: task.isFinished,
       parentListId: task.listId,
       taskId: task.id,
-    });
+      parentTaskList: taskList,
+      taskListsInBoard: boardTaskLists,
+    }, () => { console.log(this.state); });
+  }
+
+  onDone(isFinished) {
+    this.setState({ isFinished });
+  }
+
+  updateTaskList(taskList) {
+    this.setState({ taskList });
   }
 
   genericInputHandler(name, value) {
@@ -56,14 +70,38 @@ class EditTask extends React.Component {
         />
         <TextInput
           style={styles.inputfield}
-          placeholder="Descripe the Task"
+          placeholder="Describe the Task"
           value={this.state.description}
           onChangeText={(text) => this.genericInputHandler('description', text)}
+        />
+
+        <Text style={styles.helpText}>Pick list</Text>
+        <Picker
+          selectedValue={this.state.taskList}
+          onValueChange={(value) => this.updateTaskList(value)}
+          backgroundColor="#d5e8e6"
+        >
+          {
+            this.state.taskListsInBoard
+              .map((taskList) => (
+                <Picker.Item
+                  label={taskList.name}
+                  value={taskList}
+                />
+              ))
+          }
+        </Picker>
+
+        <Text style={styles.isFinishedText}>{this.state.isFinished ? 'Done' : 'Not done'}</Text>
+        <Switch
+          onValueChange={(isFinished) => this.onDone(isFinished)}
+          value={this.state.isFinished}
         />
 
         <TouchableHighlight
           onPress={() => onEdit(
             this.state,
+            this.props.navigation,
           )}
           style={styles.saveButton}
         >

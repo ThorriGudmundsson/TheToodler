@@ -5,4 +5,10 @@ export function getTasksByTaskListId(listId) {
   return data.tasks.filter((task) => task.listId === listId);
 }
 
-export default getTasksByTaskListId;
+export function getTaskByTaskListId(listId) {
+  return data.tasks.find((task) => task.listId === listId);
+}
+
+export function getTaskById(taskId) {
+  return data.tasks.find((task) => task.id === taskId);
+}

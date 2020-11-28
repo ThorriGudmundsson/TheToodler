@@ -68,7 +68,7 @@ class EditTaskList extends React.Component {
           value={this.state.name}
           onChangeText={(text) => this.genericInputHandler('name', text)}
         />
-        <Text style={styles.helpText}>pick color</Text>
+        <Text style={styles.helpText}>Pick color</Text>
 
         <Picker
           selectedValue={this.state.color}

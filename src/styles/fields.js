@@ -29,4 +29,15 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#996633',
   },
+  isFinishedButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  isFinishedText: {
+    margin: 10,
+    fontSize: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });

@@ -62,7 +62,7 @@ class Tasks extends React.Component {
         onWillFocus={(payload) => this.setState({ taskListId })}
 
         />
-        <Toolbar hasSelectedItems={selectedTasks.length > 0}
+        <Toolbar hasSelectedItems={selectedTasks}
         onAdd={() => this.props.navigation.navigate('NewTask', { taskListId })}
         onRemove={() => this.removeTask()}
           onEdit={() => this.props.navigation.navigate('EditTask', { taskId: selectedTask[0] })}

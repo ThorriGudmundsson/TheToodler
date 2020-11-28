@@ -7,13 +7,13 @@ export default StyleSheet.create({
     margin: 10,
   },
   thumbnailName: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
     flexDirection: 'column',
     margin: 8,
   },
   thumbnailText: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 'normal',
     flexDirection: 'column',
     padding: 8,

@@ -36,7 +36,7 @@ export default StyleSheet.create({
   TaskIsFinished: {
     position: 'absolute',
     top: 40,
-    right: -75,
+    right: -5,
     color: '#fff',
     fontSize: 20,
     fontWeight: '900',

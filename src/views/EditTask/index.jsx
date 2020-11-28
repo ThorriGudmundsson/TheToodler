@@ -8,12 +8,14 @@ import styles from '../../styles/fields';
 function onEdit(editValues, goback) {
   const parentIndex = data.lists.findIndex((task) => task.id === editValues.taskId);
 
+  console.log(editValues);
+
   data.tasks[parentIndex] = {
     id: editValues.taskId,
     name: editValues.name,
     description: editValues.description,
     isFinished: editValues.isFinished,
-    listId: editValues.parentListId,
+    listId: editValues.parentTaskList.id,
   };
 
   goback.goBack();
@@ -44,15 +46,15 @@ class EditTask extends React.Component {
       taskId: task.id,
       parentTaskList: taskList,
       taskListsInBoard: boardTaskLists,
-    }, () => { console.log(this.state); });
+    });
   }
 
   onDone(isFinished) {
     this.setState({ isFinished });
   }
 
-  updateTaskList(taskList) {
-    this.setState({ taskList });
+  updateTaskList(parentTaskList) {
+    this.setState({ parentTaskList });
   }
 
   genericInputHandler(name, value) {
@@ -77,7 +79,7 @@ class EditTask extends React.Component {
 
         <Text style={styles.helpText}>Pick list</Text>
         <Picker
-          selectedValue={this.state.taskList}
+          selectedValue={this.state.parentTaskList}
           onValueChange={(value) => this.updateTaskList(value)}
           backgroundColor="#d5e8e6"
         >

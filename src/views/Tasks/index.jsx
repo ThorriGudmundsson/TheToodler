@@ -65,6 +65,7 @@ class Tasks extends React.Component {
         <Toolbar hasSelectedItems={selectedTasks.length > 0}
         onAdd={() => this.props.navigation.navigate('NewTask', { taskListId })}
         onRemove={() => this.removeTask()}
+          onEdit={() => this.props.navigation.navigate('EditTask', { taskId: selectedTask[0] })}
         />
         <TasksList
           onLongPress={(id) => this.onTaskLongPress(id)}

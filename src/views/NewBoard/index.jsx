@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  View, Text, TouchableHighlight, TextInput, 
+  View, Text, TouchableHighlight, TextInput,
 } from 'react-native';
 import data from '../../resources/data.json';
 import styles from '../../styles/fields';
 
 // import ImportImages from '../Images';
 
-function onAdd(somedata, nameField, descriptionField, photoURLField) {
+function onAdd(somedata, nameField, descriptionField, photoURLField, goback) {
   let nextId = 0; // in case that boards are emty
   const defaultPhoto = 'https://5.imimg.com/data5/MC/OH/MY-15542396/green-school-board-500x500.jpg';
   if (somedata.length > 0) {
@@ -26,6 +26,8 @@ function onAdd(somedata, nameField, descriptionField, photoURLField) {
     thumbnailPhoto: photoURLField,
     description: descriptionField,
   });
+
+  goback.goBack();
 }
 
 class NewBoard extends React.Component {
@@ -36,6 +38,7 @@ class NewBoard extends React.Component {
       name: '',
       description: '',
       photoURL: '',
+      navigation: this.props.navigation,
     };
   }
 
@@ -43,7 +46,10 @@ class NewBoard extends React.Component {
     this.setState({ [name]: value });
   }
 
+
+
   render() {
+    const { name, description, photoURL, navigation } = this.state;
     return (
       <View>
         <TextInput
@@ -70,7 +76,13 @@ class NewBoard extends React.Component {
         />
 
         <TouchableHighlight
-          onPress={() => onAdd(data.boards, this.state.name, this.state.description, this.state.photoURL)}
+          onPress={() => onAdd(
+            data.boards,
+            name,
+            description,
+            photoURL,
+            navigation,
+          )}
           style={styles.saveButton}
         >
           <Text style={styles.saveButtonText}>Save</Text>

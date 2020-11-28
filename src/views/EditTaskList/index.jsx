@@ -61,6 +61,7 @@ class EditTaskList extends React.Component {
   }
 
   render() {
+    const { colors } = this.state;
     return (
       <View>
         <TextInput
@@ -69,6 +70,7 @@ class EditTaskList extends React.Component {
           value={this.state.name}
           onChangeText={(text) => this.genericInputHandler('name', text)}
         />
+        <Text style={styles.helpText}>pick color</Text>
 
         <Picker
           selectedValue={this.state.color}
@@ -76,11 +78,12 @@ class EditTaskList extends React.Component {
           backgroundColor={this.state.color}
         >
           {
-            data.lists
+            colors
               .map((taskList) => (
+
                 <Picker.Item
-                  label={taskList.id.toString()}
-                  value={taskList.color}
+                  label={taskList.label}
+                  value={taskList.value}
                 />
               ))
           }
